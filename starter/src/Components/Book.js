@@ -2,7 +2,7 @@ import React from 'react'
 
 const Book = ({image, title, author}) => {
   return (
-    <li>
+    <li key={title}>
     <div className="book">
         <div className="book-top">
                 <div
