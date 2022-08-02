@@ -1,15 +1,15 @@
 import React from 'react'
 
-const Book = ({image, title, author}) => {
+const Book = ({image, title, author, widthnum, heightnum}) => {
   return (
-    <li key={title}>
+    <li>
     <div className="book">
         <div className="book-top">
                 <div
                     className="book-cover"
                     style={{
-                    width: 128,
-                    height: 193,
+                    width: widthnum,
+                    height: heightnum,
                     backgroundImage:`url(${image})`,
                     }}
                 ></div>
