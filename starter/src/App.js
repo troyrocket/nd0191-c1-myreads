@@ -24,6 +24,19 @@ function App() {
 
     console.log(books);
 
+   /* When changing a book's shelf, updating the shelf status in the API*/
+   const  changeShelf= async(book, shelf) => {
+       await BooksAPI.update(book, shelf);
+
+       const getBooks = async () => {
+        const res = await BooksAPI.getAll();
+        setBooks(res);
+      };
+
+      await getBooks();
+   }
+
+   console.log(books);
 
   return (
     <div className="app">
@@ -33,7 +46,7 @@ function App() {
       ) : (
 
          <div>
-         <MyReads />
+         <MyReads books = {books} changeShelf={changeShelf}/>
          <div className="open-search">
             <a onClick={() => setShowSearchpage(!showSearchPage)}>Add a book</a>
           </div>

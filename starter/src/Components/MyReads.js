@@ -1,8 +1,7 @@
-import CurrentReading from "./CurrentReading";
-import WantToRead from "./WantToRead";
-import Read from "./Read";
+import BookShelf from "./BookShelf";
 
-const MyReads = () => {
+const MyReads = ({books,changeShelf}) => {
+
   return (
     <div className="list-books">
           <div className="list-books-content">
@@ -10,9 +9,9 @@ const MyReads = () => {
                       <div className="list-books-title">
                             <h1>MyReads</h1>
                       </div>
-                          <CurrentReading />
-                          <WantToRead />
-                          <Read />
+                          <BookShelf books = {books} shelftitle="Currently Reading" shelfid="currentlyReading" changeShelf={changeShelf}/>
+                          <BookShelf books = {books} shelftitle="Want to Read" shelfid="wantToRead" changeShelf={changeShelf}/>
+                          <BookShelf books = {books} shelftitle="Read" shelfid="read" changeShelf={changeShelf}/>
                 </div>
           </div>
     </div>

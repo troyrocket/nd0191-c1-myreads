@@ -35,17 +35,9 @@ const Search = ({callShowSearchPage, books}) => {
 
           <div className="search-books-results">
             <ol className="books-grid">
-            {showBooks.map((book) => {
-                return(
-                 <Book key = {book.title}
-                       image={book.imageLinks.thumbnail} 
-                       title = {book.title} 
-                       author={book.authors[0]} 
-                       widthnum={128}
-                       heightnum={192}                  
-                  />  
-                );     
-            })}     
+                        
+                     <p>Still developing</p>
+  
             </ol>
                 
           </div>
