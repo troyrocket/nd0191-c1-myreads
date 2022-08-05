@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const Book = ({book, changeShelf}) => {
 
@@ -42,5 +43,10 @@ const Book = ({book, changeShelf}) => {
   
   )
 }
+
+Book.propTypes = {
+  book: PropTypes.object.isRequired,
+  changeShelf: PropTypes.func.isRequired,
+};
 
 export default Book

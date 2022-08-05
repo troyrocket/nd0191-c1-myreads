@@ -47,7 +47,7 @@ function App() {
       }  
    },false);
      
-   console.log(searchBooks);
+   //console.log(searchBooks);
 
   return (
      <div className="app">   

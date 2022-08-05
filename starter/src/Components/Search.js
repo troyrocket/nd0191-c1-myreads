@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Book from "./Book";
-import {Link} from "react-router-dom" 
+import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
+
 
 const Search = ({changeShelf, books, searchBooks, matchBook}) => {  
 
@@ -11,8 +13,8 @@ const Search = ({changeShelf, books, searchBooks, matchBook}) => {
         matchBook(newquery);
       };
 
-      console.log(query);
-      console.log(searchBooks);
+      //console.log(query);
+      //console.log(searchBooks);
 
       const combineBooks = searchBooks.map(searchBook => {
         books.map(book => {
@@ -56,6 +58,13 @@ const Search = ({changeShelf, books, searchBooks, matchBook}) => {
           </div>
   </div>
   )
+};
+
+Search.propTypes = {
+  books: PropTypes.array.isRequired,
+  searchBooks: PropTypes.array.isRequired,
+  changeShelf: PropTypes.func.isRequired,
+  matchBook: PropTypes.func.isRequired,
 };
 
 export default Search
