@@ -1,28 +1,37 @@
 import { useState } from "react";
 import Book from "./Book";
+import {Link} from "react-router-dom" 
 
-const Search = ({callShowSearchPage, books}) => {  
+const Search = ({changeShelf, books, searchBooks, matchBook, resetSearch}) => {  
 
       const [query, setQuery] = useState(""); 
-      const updateQuery = (query) => {
-        setQuery(query.trim());
-        };
+
+      const updateQuery = (newquery) => {
+        setQuery(newquery.trim());
+        matchBook(newquery);
+      };
+
+      const combineBooks = searchBooks.map(searchBook => {
+        books.map(book => {
+          if (book.id === searchBook.id) {
+            searchBook.shelf = book.shelf;
+          }
+          return book;
+        });
+        return searchBook;
+      });
+
+        console.log(books);
+        console.log(searchBooks);
+        console.log(combineBooks);
+
       
-      const showBooks = query === "" ? books : 
-        books.filter((c) => c.title.toLowerCase().includes(query.toLowerCase()));
-
-
-
   return (
     <div className="search-books">
-          <div className="search-books-bar">
-                  <a
-                    className="close-search"
-                    onClick={() => callShowSearchPage()}
-                  >
-                    Close
-                  </a>
-
+          <div className="search-books-bar">      
+                  <Link to="/" className="close-search"> 
+                        Close
+                  </Link>
                   <div className="search-books-input-wrapper">
                     <input
                       type="text"
@@ -35,9 +44,15 @@ const Search = ({callShowSearchPage, books}) => {
 
           <div className="search-books-results">
             <ol className="books-grid">
-                        
-                     <p>Still developing</p>
-  
+                  {combineBooks.map((combineBook) => {
+                                return(
+                                    <Book key = {combineBook.id}
+                                          book = {combineBook} 
+                                          changeShelf={changeShelf}
+                                        />  
+                                       )
+                              })
+                  }           
             </ol>
                 
           </div>

@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const Book = ({book, changeShelf}) => {
 
-  const [shelf, setShelf] = useState(book.shelf);
+  const [shelf, setShelf] = useState(book.shelf? book.shelf : "none");
 
   const moveShelf = (newShelf) => {
        setShelf(newShelf);
@@ -19,13 +19,13 @@ const Book = ({book, changeShelf}) => {
                     style={{
                     width: 128,
                     height: 192,
-                    backgroundImage:`url(${book.imageLinks.thumbnail})`,
+                    backgroundImage:`url(${book.imageLinks? book.imageLinks.thumbnail : ''})`,
                     }}
                 ></div>
 
                 <div className="book-shelf-changer">
-                    <select value={shelf} onChange={(event) => moveShelf(event.target.value)}>
-                    <option value="none" disabled>Move to...</option>
+                    <select value= {shelf} onChange={(event) => moveShelf(event.target.value)}>
+                    <option value="move" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
                     <option value="read">Read</option>
@@ -36,7 +36,7 @@ const Book = ({book, changeShelf}) => {
         </div>
 
         <div className="book-title">{book.title}</div>
-        <div className="book-authors">{book.authors.join(", ")}</div>
+        <div className="book-authors">{book.authors? book.authors.join(", ") : 'Unknown Author'}</div>
     </div>
     </li>
   
