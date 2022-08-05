@@ -2,14 +2,17 @@ import { useState } from "react";
 import Book from "./Book";
 import {Link} from "react-router-dom" 
 
-const Search = ({changeShelf, books, searchBooks, matchBook, resetSearch}) => {  
+const Search = ({changeShelf, books, searchBooks, matchBook}) => {  
 
       const [query, setQuery] = useState(""); 
 
       const updateQuery = (newquery) => {
-        setQuery(newquery.trim());
+        setQuery(newquery);
         matchBook(newquery);
       };
+
+      console.log(query);
+      console.log(searchBooks);
 
       const combineBooks = searchBooks.map(searchBook => {
         books.map(book => {
@@ -21,11 +24,6 @@ const Search = ({changeShelf, books, searchBooks, matchBook, resetSearch}) => {
         return searchBook;
       });
 
-        console.log(books);
-        console.log(searchBooks);
-        console.log(combineBooks);
-
-      
   return (
     <div className="search-books">
           <div className="search-books-bar">      
@@ -38,21 +36,21 @@ const Search = ({changeShelf, books, searchBooks, matchBook, resetSearch}) => {
                       placeholder="Search by title, author, or ISBN"
                       value={query}
                       onChange={(event) => updateQuery(event.target.value)}
+                      autoFocus
                     />
                   </div>
           </div>
 
           <div className="search-books-results">
             <ol className="books-grid">
-                  {combineBooks.map((combineBook) => {
-                                return(
-                                    <Book key = {combineBook.id}
-                                          book = {combineBook} 
-                                          changeShelf={changeShelf}
-                                        />  
-                                       )
-                              })
-                  }           
+                {(query !== "") && combineBooks.map((combineBook) => {
+                    return(
+                        <Book key = {combineBook.id}
+                              book = {combineBook} 
+                              changeShelf={changeShelf}
+                            />  
+                           )
+                  })}                             
             </ol>
                 
           </div>

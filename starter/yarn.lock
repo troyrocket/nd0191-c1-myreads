@@ -3896,6 +3896,11 @@
     "whatwg-mimetype" "^2.3.0"
     "whatwg-url" "^8.0.0"
 
+"debounce-throttle@^1.0.4":
+  "integrity" "sha512-dg3ImASYct9Kymx8Wm+uC9luq2BkbTrULrS/CzAVTYvVJibhYgXznKVytlqhMC8plSl6U5Fxy5bfWu+JhYI7ww=="
+  "resolved" "https://registry.npmmirror.com/debounce-throttle/-/debounce-throttle-1.0.4.tgz"
+  "version" "1.0.4"
+
 "debug@^2.2.0":
   "integrity" "sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA=="
   "resolved" "https://registry.npmmirror.com/debug/-/debug-2.6.9.tgz"
@@ -10737,6 +10742,11 @@
 "throat@^5.0.0":
   "integrity" "sha512-fcwX4mndzpLQKBS1DVYhGAcYaYt7vsHNIvQV+WXMvnow5cgjPphq5CaayLaGsjRdSCKZFNGt7/GYAuXaNOiYCA=="
   "resolved" "https://registry.npmmirror.com/throat/-/throat-5.0.0.tgz"
+  "version" "5.0.0"
+
+"throttle-debounce@^5.0.0":
+  "integrity" "sha512-2iQTSgkkc1Zyk0MeVrt/3BvuOXYPl/R8Z0U2xxo9rjwNciaHDG3R+Lm6dh4EeUci49DanvBnuqI6jshoQQRGEg=="
+  "resolved" "https://registry.npmmirror.com/throttle-debounce/-/throttle-debounce-5.0.0.tgz"
   "version" "5.0.0"
 
 "through2@^2.0.0":

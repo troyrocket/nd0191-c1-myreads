@@ -4,10 +4,10 @@ import MyReads from "./Components/MyReads";
 import Search from "./Components/Search";
 import * as BooksAPI from "./BooksAPI";
 import { Route, Routes } from "react-router-dom";
+import { debounce } from 'throttle-debounce';
 
 function App() {
-  // let navigate = useNavigate();
-
+  
   const [books, setBooks] = useState([]);
   const [searchBooks, setSearchBooks] = useState([]); 
 
@@ -30,14 +30,24 @@ function App() {
       await getBooks();
    }
  
-   const matchBook = async (newquery) => {
-       const res = await BooksAPI.search(newquery);
-       setSearchBooks(res);
-     }
-
-    const resetSearch = () => {
-        setSearchBooks([]); 
-      };  
+   /*Waiting 300 miliseconds before rendering the search results*/ 
+   const matchBook = debounce(300, newquery => {
+      if (newquery.length > 0) {
+          const fetchSearchBook = async (newquery) => {
+              const res = await BooksAPI.search(newquery);
+              if (res.error) {
+                setSearchBooks([]); }
+              else {
+              setSearchBooks(res);}              
+          }
+          fetchSearchBook(newquery);   
+      } 
+      else {
+          setSearchBooks([]); 
+      }  
+   },false);
+     
+   console.log(searchBooks);
 
   return (
      <div className="app">   
@@ -46,7 +56,7 @@ function App() {
               exact path="/"
               element={
                 <MyReads books = {books} 
-                        changeShelf={changeShelf}
+                         changeShelf={changeShelf}
                 />}
           />
           <Route
@@ -56,7 +66,6 @@ function App() {
                         books = {books} 
                         searchBooks = {searchBooks}
                         matchBook= {matchBook}
-                        resetSearch = {resetSearch}
                 />}    
           />
         </Routes>   
