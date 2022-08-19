@@ -1,94 +1,53 @@
-# MyReads Project
+# MyReads Project-Troy
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+# Table of Contents
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://reactjs.org/docs/create-a-new-react-app.html) to bootstrap the project.
+* [Overview](#overview)
+* [Specification](#specification)
+* [How to run the project](#how-to-run-the-project)
+* [App Functionality](#app-functionality)
 
-## TL;DR
+## Overview
 
-To get started developing right away:
+In the MyReads project, I created a bookshelf app that allows the user to select and categorize books they have read, are currently reading, or want to read. The project emphasizes using React to build the application and provides an API server and client library that I used to persist information as the user interacts with the application.
 
-- install all project dependencies with `npm install`
-- start the development server with `npm start`
+## Specification
 
-## What You're Getting
+As a starting point, I was given a starter static template without any of the React code that was needed to complete the project. My job was be to add interactivity to the app by refactoring the static code in this template.
 
-```bash
-├── CONTRIBUTING.md
-├── README.md - This file.
-├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
-├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
-├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
-└── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
-    ├── icons # Helpful images for your app. Use at your discretion.
-    │   ├── add.svg
-    │   ├── arrow-back.svg
-    │   └── arrow-drop-down.svg
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
-```
+## How to run the project
 
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
+To run the project, download or clone the repository in your computer:
 
-## Backend Server
+    $ git clone https://github.com/troyrocket/nd0191-c1-myreads-app
 
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
+and follow the instructions below.
 
-- [`getAll`](#getall)
-- [`update`](#update)
-- [`search`](#search)
+In the repository folder: 
+* install all project dependencies with 
 
-### `getAll`
+        npm install
+* start the development server with 
 
-Method Signature:
+        npm start
 
-```js
-getAll();
-```
+Please note that the backend server -against which the web app was developped- was provided by Udacity. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods I used to perform necessary operations on the backend:
 
-- Returns a Promise which resolves to a JSON object containing a collection of book objects.
-- This collection represents the books currently in the bookshelves in your app.
+* `getAll`
+* `update`
+* `search`
 
-### `update`
+For more information on how these methods are used exactly, please refer to the original [Udacity repository](https://github.com/udacity/nd0191-c1-myreads).
 
-Method Signature:
 
-```js
-update(book, shelf);
-```
 
-- book: `<Object>` containing at minimum an `id` attribute
-- shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]
-- Returns a Promise which resolves to a JSON object containing the response data of the POST request
+## App Functionality
 
-### `search`
+In this application, the main page displays a list of "shelves" (i.e. categories), each of which contains a number of books. The three shelves are:
+* Currently Reading
+* Want to Read
+* Read
 
-Method Signature:
+Each book has a control that lets the user select the shelf for that book. When the user select a different shelf, the book moves there.
 
-```js
-search(query);
-```
-
-- query: `<String>`
-- Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
-- These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
-
-## Important
-
-The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
-
-## Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebook/create-react-app/blob/main/packages/cra-template/template/README.md).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+The search page has a text input field that may be used to find books. As the value of the text input changes, the books that match that query are displayed on the page, along with a control that lets the user add the book to their library.
